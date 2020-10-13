@@ -32,5 +32,35 @@ namespace MoodAnalyzerProblemMsTest
             // Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Given_Null_Mood_Should_Return_NullMood_Using_CustomException()
+        {
+            try
+            {
+                string message = null;
+                MoodAnalyser analyser = new MoodAnalyser(message);
+                var actual = analyser.AnalyserMethod();
+            }
+            catch(MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual("Mood should not be null", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Given_Empty_Mood_Should_Return_EmptyMood_Using_CustomException()
+        {
+            try
+            {
+                string message = " ";
+                MoodAnalyser analyser = new MoodAnalyser(message);
+                var actual = analyser.AnalyserMethod();
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual("Mood should not be empty", ex.Message);
+            }
+        }
     }
 }
