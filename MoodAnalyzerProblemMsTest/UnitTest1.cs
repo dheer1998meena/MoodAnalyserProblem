@@ -66,5 +66,14 @@ namespace MoodAnalyzerProblemMsTest
                 Assert.AreEqual("Mood should not be empty", ex.Message);
             }
         }
+
+        // UC 4.1 Given MoodAnalyserFactory Should Return MoodAnalyser Object
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_CreateDefaultObject_ShouldReturnObject()
+        {
+            object expected = new MoodAnalyser();
+            object actual = MoodAnalyserFactory.CreateMoodAnalyserDefaultObject("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser");
+            expected.Equals(actual);
+        }
     }
 }
