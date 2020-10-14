@@ -11,6 +11,7 @@ namespace MoodAnalyzerProblem
             string message = Console.ReadLine();
             MoodAnalyser analyser = new MoodAnalyser(message);
             Console.WriteLine(analyser.AnalyserMethod());
+            MoodAnalyserFactory.CreateMoodAnalyserDefaultObject("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser");
         }
     }
 }
