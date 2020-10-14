@@ -24,7 +24,7 @@ namespace MoodAnalyzerProblem
             }
             catch(NullReferenceException)
             {
-                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be null");
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
         }
     }
