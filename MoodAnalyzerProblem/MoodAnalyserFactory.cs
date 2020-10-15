@@ -112,5 +112,33 @@ namespace MoodAnalyzerProblem
 
             }
         }
+        /// <summary>
+        /// UC 7 Change Dynamically Mood
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldName"></param>
+        /// <returns></returns>
+        public static Object ChangeMoodDynamically(string message, string fieldName)
+        {
+            Type type = typeof(MoodAnalyser);
+            object mood = Activator.CreateInstance(type);
+
+            try
+            {
+                FieldInfo fieldInfo = type.GetField(fieldName);
+                fieldInfo.SetValue(mood, message);
+                MethodInfo method = type.GetMethod("AnalyseMood");
+                object methodReturn = method.Invoke(mood, null);
+                return methodReturn;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_FIELD, "No such field found");
+            }
+            catch
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Null mood not accepted");
+            }
+        }
     }
 }

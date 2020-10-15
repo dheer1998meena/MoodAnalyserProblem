@@ -172,5 +172,59 @@ namespace MoodAnalyzerProblemMsTest
                 Assert.AreEqual("no such method is found", ex.Message);
             }
         }
+
+        /// <summary>
+        /// UC 7.1 When given proper fieldName and a mood message for happy mood then should return HAPPY
+        /// </summary>
+        [TestMethod]
+        public void ChangeMoodDynamicallyForValidFieldName()
+        {
+            // ACT
+            object actual = MoodAnalyserFactory.ChangeMoodDynamically("I am happy today", "message");
+
+            // Assert
+            Assert.AreEqual("HAPPY", actual);
+        }
+        /// <summary>
+        /// UC7.2 When given wrong fieldName and a happy mood message then should throw exception
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldName"></param>
+        [DataRow("Happy", "InvalidField")]
+        [TestMethod, TestCategory("Reflection")]
+        public void ChangeMoodDynamicallyInValid(string message, string fieldName)
+        {
+            try
+            {
+                // ACT
+                object actual = MoodAnalyserFactory.ChangeMoodDynamically(message, fieldName);
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("No such field found", ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// UC 7.3 When given correct fieldName and passing a null mood message then throw error that Mood should not be NULL
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="fieldName"></param>
+        [DataRow(null, "messsage")]
+        [TestMethod, TestCategory("Reflection")]
+        public void ChangeMoodDynamicallySetNull(string message, string fieldName)
+        {
+            try
+            {
+                // ACT
+                object actual = MoodAnalyserFactory.ChangeMoodDynamically(message, fieldName);
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                // Assert
+                Assert.AreEqual("No such field found", ex.Message);
+            }
+        }
     }
 }
