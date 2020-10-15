@@ -7,7 +7,10 @@ namespace MoodAnalyzerProblemMsTest
     [TestClass]
     public class UnitTest1
     {
-        // UC1.1 Given sad mood return sad mood.
+        /// <summary>
+        /// UC1.1 Given sad mood return sad mood.
+        /// </summary>
+        /// <param name="message"></param>
         [DataRow("I am in a sad mood ")]
         [TestMethod]
         public void Given_Sad_Mood_Returning_Sad_Result(string message)
@@ -21,7 +24,10 @@ namespace MoodAnalyzerProblemMsTest
                 Assert.AreEqual(expected, actual);
         }
 
-        // UC1.2 Given any mood return happy mood.
+        /// <summary>
+        ///  UC1.2 Given any mood return happy mood.
+        /// </summary>
+        /// <param name="message"></param>
         [DataRow("I am in any mood ")]
         [TestMethod]
         public void Given_Any_Mood_Returning_Happy_Result(string message)
@@ -35,7 +41,9 @@ namespace MoodAnalyzerProblemMsTest
             Assert.AreEqual(expected, actual);
         }
 
-        // UC3.1 Given null should throw CustomException null mood.
+        /// <summary>
+        /// UC3.1 Given null should throw CustomException null mood.
+        /// </summary>
         [TestMethod]
         public void Given_Null_Mood_Should_Return_NullMood_Using_CustomException()
         {
@@ -51,7 +59,9 @@ namespace MoodAnalyzerProblemMsTest
             }
         }
 
-        // UC3.2 Given empty should throw CustomException empty mood.
+        /// <summary>
+        /// UC3.2 Given empty should throw CustomException empty mood.
+        /// </summary>
         [TestMethod]
         public void Given_Empty_Mood_Should_Return_EmptyMood_Using_CustomException()
         {
@@ -67,7 +77,9 @@ namespace MoodAnalyzerProblemMsTest
             }
         }
 
-        // UC 4.1 Given MoodAnalyserFactory Should Return MoodAnalyser Object
+        /// <summary>
+        /// UC 4.1 Given MoodAnalyserFactory Should Return MoodAnalyser Object
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyserFactory_CreateDefaultObject_ShouldReturnObject()
         {
@@ -76,7 +88,9 @@ namespace MoodAnalyzerProblemMsTest
             expected.Equals(actual);
         }
 
-        // 5.1 Given MoodAnalyserFactory Should Return Parameterized Object
+        /// <summary>
+        /// 5.1 Given MoodAnalyserFactory Should Return Parameterized Object
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyserFactory_CreateParameterizedObject_ShouldReturnObject()
         {
@@ -85,7 +99,12 @@ namespace MoodAnalyzerProblemMsTest
             expected.Equals(actual);
         }
 
-        // 5.2 Given MoodAnalyserFactory Invalid Class Name Should Return 
+        /// <summary>
+        ///  5.2 Given MoodAnalyserFactory Invalid Class Name Should Return
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="Constructor"></param>
+        /// <param name="message"></param>
         [DataRow("MoodAnalyse","MoodAnalyser","message")]
         [TestMethod]
         public void GivenMoodAnalyserFactory_InvalidClassName_CreateParameterizedObject_ShouldReturnObject( string className,string Constructor,string message)
@@ -103,7 +122,12 @@ namespace MoodAnalyzerProblemMsTest
             }
         }
 
-        // 5.3 Given MoodAnalyserFactory Invalid Constructor Name Should Return 
+        /// <summary>
+        /// 5.3 Given MoodAnalyserFactory Invalid Constructor Name Should Return 
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="Constructor"></param>
+        /// <param name="message"></param>
         [DataRow("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyse", "message")]
         [TestMethod]
         public void GivenMoodAnalyserFactory_InvalidConstructorName_CreateParameterizedObject_ShouldReturnObject(string className, string Constructor, string message)
@@ -121,7 +145,9 @@ namespace MoodAnalyzerProblemMsTest
             }
         }
 
-        // UC6.1 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Happy Message.
+        /// <summary>
+        /// UC6.1 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Happy Message.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyserFactory_ShouldInvokeAnalyserMoodMethod_ReturnHappyMessage()
         {
@@ -130,7 +156,9 @@ namespace MoodAnalyzerProblemMsTest
             expected.Equals(actual);
         }
 
-        // UC6.2 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Exception.
+        /// <summary>
+        /// UC6.2 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Exception.
+        /// </summary>
         [TestMethod]
         public void GivenMoodAnalyserFactory_ShouldInvokeAnalyserMoodMethod_ReturnException()
         {
