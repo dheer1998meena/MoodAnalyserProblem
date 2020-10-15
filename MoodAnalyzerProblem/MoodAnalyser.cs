@@ -8,15 +8,27 @@ namespace MoodAnalyzerProblem
     {
         private string message;
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public MoodAnalyser()
         {
             Console.WriteLine("Default Constructor");
         }
+
+        /// <summary>
+        /// Parameterized Constructor
+        /// </summary>
+        /// <param name="message"></param>
         public MoodAnalyser(string message)
         {
             this.message = message;
             Console.WriteLine("Parameterized Constructor");
         }
+        /// <summary>
+        /// To analyse the mood
+        /// </summary>
+        /// <returns></returns>
         public string AnalyserMethod()
         {
             try
