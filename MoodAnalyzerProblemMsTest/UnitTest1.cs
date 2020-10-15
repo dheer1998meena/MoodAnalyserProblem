@@ -176,8 +176,6 @@ namespace MoodAnalyzerProblemMsTest
         /// <summary>
         /// UC 7.1 When given proper fieldName and a mood message for happy mood then should return HAPPY
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="fieldName"></param>
         [TestMethod]
         public void ChangeMoodDynamicallyForValidFieldName()
         {
