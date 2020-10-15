@@ -120,5 +120,29 @@ namespace MoodAnalyzerProblemMsTest
                 Assert.AreEqual("no such constructor found", ex.Message);
             }
         }
+
+        // UC6.1 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Happy Message.
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_ShouldInvokeAnalyserMoodMethod_ReturnHappyMessage()
+        {
+            object expected = new MoodAnalyser("Happy"); ;
+            string actual = MoodAnalyserFactory.InvokeAnalyserMethod("Happy", "AnalyserMethod");
+            expected.Equals(actual);
+        }
+
+        // UC6.2 GivenMoodAnalyserFactory Happy Message Should InvokeAnalyserMood Method Return Exception.
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_ShouldInvokeAnalyserMoodMethod_ReturnException()
+        {
+            object expected = new MoodAnalyser("Happy");
+            try
+            {
+                string actual = MoodAnalyserFactory.InvokeAnalyserMethod("Happy", "AnalysMethod");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual("no such method is found", ex.Message);
+            }
+        }
     }
 }
