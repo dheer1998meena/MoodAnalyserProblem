@@ -75,5 +75,50 @@ namespace MoodAnalyzerProblemMsTest
             object actual = MoodAnalyserFactory.CreateMoodAnalyserDefaultObject("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser");
             expected.Equals(actual);
         }
+
+        // 5.1 Given MoodAnalyserFactory Should Return Parameterized Object
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_CreateParameterizedObject_ShouldReturnObject()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object actual = MoodAnalyserFactory.CreateMoodAnalyserParameterizedObject("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser","HAPPY");
+            expected.Equals(actual);
+        }
+
+        // 5.2 Given MoodAnalyserFactory Invalid Class Name Should Return 
+        [DataRow("MoodAnalyse","MoodAnalyser","message")]
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_InvalidClassName_CreateParameterizedObject_ShouldReturnObject( string className,string Constructor,string message)
+        {
+            
+            object expected = new MoodAnalyser(message);
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserParameterizedObject(className, Constructor, message);
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+
+                Assert.AreEqual("no such constructor found", ex.Message);
+            }
+        }
+
+        // 5.3 Given MoodAnalyserFactory Invalid Constructor Name Should Return 
+        [DataRow("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyse", "message")]
+        [TestMethod]
+        public void GivenMoodAnalyserFactory_InvalidConstructorName_CreateParameterizedObject_ShouldReturnObject(string className, string Constructor, string message)
+        {
+
+            object expected = new MoodAnalyser(message);
+            try
+            {
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserParameterizedObject(className, Constructor, message);
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+
+                Assert.AreEqual("no such constructor found", ex.Message);
+            }
+        }
     }
 }

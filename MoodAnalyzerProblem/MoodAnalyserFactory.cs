@@ -30,5 +30,27 @@ namespace MoodAnalyzerProblem
             else
                 throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CONSTRUCTOR, "no such constructor found");
         }
+
+        public static object CreateMoodAnalyserParameterizedObject(string className, string Constructor, string message)
+        {
+            string pattern = @"." + Constructor + "$";
+            var result = Regex.Match(className, pattern);
+            if (result.Success)
+            {
+                try
+                {
+                    Assembly assembly = Assembly.GetExecutingAssembly();
+                    Type moodAnalyseType = assembly.GetType(className);
+                    var res = Activator.CreateInstance(moodAnalyseType,message);
+                    return res;
+                }
+                catch (NullReferenceException)
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "no such class found");
+                }
+            }
+            else
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CONSTRUCTOR, "no such constructor found");
+        }
     }
 }
